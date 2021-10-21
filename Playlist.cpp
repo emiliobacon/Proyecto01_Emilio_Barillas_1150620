@@ -22,6 +22,17 @@ String^ Playlist::Quitar()
     return Retorno;
 }
 
+String^ Playlist::Recorrer()
+{
+    if (Cabeza == nullptr)
+        return nullptr; 
+    String^ Retorno = Cabeza->Pista + " " + Cabeza->Artista; 
+    Cancion^ Top = Cabeza; 
+    Cabeza = Cabeza->Siguiente; 
+
+    return Retorno;
+}
+
 void Playlist::Limpiar()
 {
     while (!PilaVacia())

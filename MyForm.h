@@ -22,6 +22,9 @@ namespace PartyMix {
 	{
 	public:
 		Playlist^ Playlist1 = gcnew Playlist();
+	private: System::Windows::Forms::Label^ lblTamañoPlaylist;
+	private: System::Windows::Forms::Button^ btnBorrarPlaylist;
+	public:
 		LeerCSV^ Leer = gcnew LeerCSV();
 
 		MyForm(void)
@@ -72,6 +75,8 @@ namespace PartyMix {
 			this->lblPlaylist = (gcnew System::Windows::Forms::Label());
 			this->btnReproducir = (gcnew System::Windows::Forms::Button());
 			this->listboxPlaylist = (gcnew System::Windows::Forms::ListBox());
+			this->lblTamañoPlaylist = (gcnew System::Windows::Forms::Label());
+			this->btnBorrarPlaylist = (gcnew System::Windows::Forms::Button());
 			this->SuspendLayout();
 			// 
 			// lblAhoraReproduciendo
@@ -93,7 +98,7 @@ namespace PartyMix {
 			// lblPlaylist
 			// 
 			this->lblPlaylist->AutoSize = true;
-			this->lblPlaylist->Location = System::Drawing::Point(652, 22);
+			this->lblPlaylist->Location = System::Drawing::Point(597, 6);
 			this->lblPlaylist->Name = L"lblPlaylist";
 			this->lblPlaylist->Size = System::Drawing::Size(39, 13);
 			this->lblPlaylist->TabIndex = 2;
@@ -117,11 +122,32 @@ namespace PartyMix {
 			this->listboxPlaylist->Size = System::Drawing::Size(140, 342);
 			this->listboxPlaylist->TabIndex = 5;
 			// 
+			// lblTamañoPlaylist
+			// 
+			this->lblTamañoPlaylist->AutoSize = true;
+			this->lblTamañoPlaylist->Location = System::Drawing::Point(597, 22);
+			this->lblTamañoPlaylist->Name = L"lblTamañoPlaylist";
+			this->lblTamañoPlaylist->Size = System::Drawing::Size(66, 13);
+			this->lblTamañoPlaylist->TabIndex = 6;
+			this->lblTamañoPlaylist->Text = L"Canciones:  ";
+			// 
+			// btnBorrarPlaylist
+			// 
+			this->btnBorrarPlaylist->Location = System::Drawing::Point(246, 51);
+			this->btnBorrarPlaylist->Name = L"btnBorrarPlaylist";
+			this->btnBorrarPlaylist->Size = System::Drawing::Size(105, 33);
+			this->btnBorrarPlaylist->TabIndex = 7;
+			this->btnBorrarPlaylist->Text = L"Borrar Playlist";
+			this->btnBorrarPlaylist->UseVisualStyleBackColor = true;
+			this->btnBorrarPlaylist->Click += gcnew System::EventHandler(this, &MyForm::btnBorrarPlaylist_Click);
+			// 
 			// MyForm
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->ClientSize = System::Drawing::Size(764, 399);
+			this->Controls->Add(this->btnBorrarPlaylist);
+			this->Controls->Add(this->lblTamañoPlaylist);
 			this->Controls->Add(this->listboxPlaylist);
 			this->Controls->Add(this->btnReproducir);
 			this->Controls->Add(this->lblPlaylist);
@@ -154,19 +180,30 @@ namespace PartyMix {
 				linea.erase(0, pos + limitador.length());
 			}
 
-			if (linea == "")
+			if (linea == "" && token != "")
 			{
 				String^ pista = gcnew String(token.data());
 				Playlist1->Insertar(pista, "DESCONOCIDO");
 
 			}
-			else
+			else if (token == "" && linea != "")
+			{
+				String^ artista = gcnew String(linea.data());
+				Playlist1->Insertar("DESCONOCIDO", artista);
+			}
+			else if (token == "" && linea == "")
+			{
+				Playlist1->Insertar("DESCONOCIDO", "DESCONOCIDO");
+			}
+			else 
 			{
 				String^ pista = gcnew String(token.data());
 				String^ artista = gcnew String(linea.data());
 				Playlist1->Insertar(pista, artista);
 			}
 		}
+
+		lblTamañoPlaylist->Text = "Canciones: " + Playlist1->Size();
 		
 		
 	}
@@ -174,18 +211,24 @@ namespace PartyMix {
 	
 
 	private: System::Void btnReproducir_Click(System::Object^ sender, System::EventArgs^ e) {
+	
+		lblTamañoPlaylist->Text = "Canciones: " + Playlist1->Size();
+
+		if (Playlist1->PilaVacia() == false)
+		{
+			txtAhoraReproduciendo->Text = Playlist1->Quitar();
+		}
+		else
+		{
+			txtAhoraReproduciendo->Text = "Playlist Vacía";
+		}
 
 
-	if (Playlist1->PilaVacia() == false)
-	{
-		txtAhoraReproduciendo->Text = Playlist1->Quitar();
-	}
-	else
-	{
-		txtAhoraReproduciendo->Text = "Playlist Vacía";
-	}
+}
+private: System::Void btnBorrarPlaylist_Click(System::Object^ sender, System::EventArgs^ e) {
 
-
+	Playlist1->Limpiar();
+	lblTamañoPlaylist->Text = "Canciones: " + Playlist1->Size();
 }
 };
 }

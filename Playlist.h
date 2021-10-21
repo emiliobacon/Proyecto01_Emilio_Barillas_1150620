@@ -11,5 +11,6 @@ public:
 	String^ Quitar();
 	String^ Peek();
 	bool PilaVacia();
+	String^ Recorrer();
 };
 
