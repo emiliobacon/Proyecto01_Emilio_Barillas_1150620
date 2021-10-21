@@ -23,7 +23,8 @@ namespace PartyMix {
 	public:
 		Playlist^ Playlist1 = gcnew Playlist();
 	private: System::Windows::Forms::Label^ lblTamañoPlaylist;
-	private: System::Windows::Forms::Label^ label1;
+	private: System::Windows::Forms::Label^ lblMostrarPlaylist;
+
 	private: System::Windows::Forms::Button^ btnBorrarPlaylist;
 	public:
 		
@@ -51,7 +52,7 @@ namespace PartyMix {
 	private: System::Windows::Forms::Label^ lblPlaylist;
 
 	private: System::Windows::Forms::Button^ btnReproducir;
-	private: System::Windows::Forms::ListBox^ listboxPlaylist;
+
 
 
 
@@ -75,10 +76,9 @@ namespace PartyMix {
 			this->txtAhoraReproduciendo = (gcnew System::Windows::Forms::TextBox());
 			this->lblPlaylist = (gcnew System::Windows::Forms::Label());
 			this->btnReproducir = (gcnew System::Windows::Forms::Button());
-			this->listboxPlaylist = (gcnew System::Windows::Forms::ListBox());
 			this->lblTamañoPlaylist = (gcnew System::Windows::Forms::Label());
 			this->btnBorrarPlaylist = (gcnew System::Windows::Forms::Button());
-			this->label1 = (gcnew System::Windows::Forms::Label());
+			this->lblMostrarPlaylist = (gcnew System::Windows::Forms::Label());
 			this->SuspendLayout();
 			// 
 			// lblAhoraReproduciendo
@@ -100,7 +100,7 @@ namespace PartyMix {
 			// lblPlaylist
 			// 
 			this->lblPlaylist->AutoSize = true;
-			this->lblPlaylist->Location = System::Drawing::Point(597, 6);
+			this->lblPlaylist->Location = System::Drawing::Point(12, 107);
 			this->lblPlaylist->Name = L"lblPlaylist";
 			this->lblPlaylist->Size = System::Drawing::Size(39, 13);
 			this->lblPlaylist->TabIndex = 2;
@@ -116,18 +116,10 @@ namespace PartyMix {
 			this->btnReproducir->UseVisualStyleBackColor = true;
 			this->btnReproducir->Click += gcnew System::EventHandler(this, &MyForm::btnReproducir_Click);
 			// 
-			// listboxPlaylist
-			// 
-			this->listboxPlaylist->FormattingEnabled = true;
-			this->listboxPlaylist->Location = System::Drawing::Point(600, 38);
-			this->listboxPlaylist->Name = L"listboxPlaylist";
-			this->listboxPlaylist->Size = System::Drawing::Size(140, 342);
-			this->listboxPlaylist->TabIndex = 5;
-			// 
 			// lblTamañoPlaylist
 			// 
 			this->lblTamañoPlaylist->AutoSize = true;
-			this->lblTamañoPlaylist->Location = System::Drawing::Point(597, 22);
+			this->lblTamañoPlaylist->Location = System::Drawing::Point(12, 123);
 			this->lblTamañoPlaylist->Name = L"lblTamañoPlaylist";
 			this->lblTamañoPlaylist->Size = System::Drawing::Size(66, 13);
 			this->lblTamañoPlaylist->TabIndex = 6;
@@ -143,24 +135,24 @@ namespace PartyMix {
 			this->btnBorrarPlaylist->UseVisualStyleBackColor = true;
 			this->btnBorrarPlaylist->Click += gcnew System::EventHandler(this, &MyForm::btnBorrarPlaylist_Click);
 			// 
-			// label1
+			// lblMostrarPlaylist
 			// 
-			this->label1->AutoSize = true;
-			this->label1->Location = System::Drawing::Point(150, 131);
-			this->label1->Name = L"label1";
-			this->label1->Size = System::Drawing::Size(35, 13);
-			this->label1->TabIndex = 8;
-			this->label1->Text = L"label1";
+			this->lblMostrarPlaylist->AutoSize = true;
+			this->lblMostrarPlaylist->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 8.25F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->lblMostrarPlaylist->Location = System::Drawing::Point(12, 146);
+			this->lblMostrarPlaylist->Name = L"lblMostrarPlaylist";
+			this->lblMostrarPlaylist->Size = System::Drawing::Size(0, 13);
+			this->lblMostrarPlaylist->TabIndex = 8;
 			// 
 			// MyForm
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->ClientSize = System::Drawing::Size(764, 399);
-			this->Controls->Add(this->label1);
+			this->Controls->Add(this->lblMostrarPlaylist);
 			this->Controls->Add(this->btnBorrarPlaylist);
 			this->Controls->Add(this->lblTamañoPlaylist);
-			this->Controls->Add(this->listboxPlaylist);
 			this->Controls->Add(this->btnReproducir);
 			this->Controls->Add(this->lblPlaylist);
 			this->Controls->Add(this->txtAhoraReproduciendo);
@@ -192,13 +184,17 @@ namespace PartyMix {
 				linea.erase(0, pos + limitador.length());
 			}
 
-			if (linea == "" && token != "")
+			String^ pista = gcnew String(token.data());
+			String^ artista = gcnew String(linea.data());
+			Playlist1->Insertar(pista, artista);
+
+			/*if (linea == "" && token != "")
 			{
 				String^ pista = gcnew String(token.data());
 				Playlist1->Insertar(pista, "DESCONOCIDO");
 
 			}
-			else if (token == "" && linea != "")
+			else if (token == ""  linea != "")
 			{
 				String^ artista = gcnew String(linea.data());
 				Playlist1->Insertar("DESCONOCIDO", artista);
@@ -212,11 +208,11 @@ namespace PartyMix {
 				String^ pista = gcnew String(token.data());
 				String^ artista = gcnew String(linea.data());
 				Playlist1->Insertar(pista, artista);
-			}
+			}*/
 		}
 
 		lblTamañoPlaylist->Text = "Canciones: " + Playlist1->Size();
-		
+		lblMostrarPlaylist->Text = (Playlist1->Recorrer());
 		
 	}
 	
@@ -225,7 +221,6 @@ namespace PartyMix {
 	private: System::Void btnReproducir_Click(System::Object^ sender, System::EventArgs^ e) {
 	
 		lblTamañoPlaylist->Text = "Canciones: " + Playlist1->Size();
-		
 
 		if (Playlist1->PilaVacia() == false)
 		{
@@ -236,13 +231,14 @@ namespace PartyMix {
 			txtAhoraReproduciendo->Text = "Playlist Vacía";
 		}
 
-		label1->Text = Playlist1->Recorrer();
+		lblMostrarPlaylist->Text = (Playlist1->Recorrer());
 
 }
 private: System::Void btnBorrarPlaylist_Click(System::Object^ sender, System::EventArgs^ e) {
 
 	Playlist1->Limpiar();
 	lblTamañoPlaylist->Text = "Canciones: " + Playlist1->Size();
+	lblMostrarPlaylist->Text = (Playlist1->Recorrer());
 }
 };
 }

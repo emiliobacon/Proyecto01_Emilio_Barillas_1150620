@@ -3,8 +3,15 @@
 void Playlist::Insertar(String^ pista, String^ artista)
 {
     Cancion^ Nuevo = gcnew Cancion();
-    Nuevo->Artista = artista; 
-    Nuevo->Pista = pista; 
+    if (artista == "")
+        Nuevo->Artista = "DESCONOCIDO";
+    else
+        Nuevo->Artista = artista; 
+    if (pista == "")
+        Nuevo->Pista = "DESCONOCIDO";
+    else
+        Nuevo->Pista = pista; 
+
     Nuevo->Siguiente = Cabeza; 
     Cabeza = Nuevo; 
 }
@@ -30,8 +37,7 @@ String^ Playlist::Recorrer()
     Recorrer = Cabeza; 
     while (Recorrer != nullptr)
     {
-        Datos += Recorrer->Pista + "- " + Recorrer->Artista;
-        
+        Datos += Recorrer->Pista + "-" + Recorrer->Artista + "\n";
         Recorrer = Recorrer->Siguiente;
     }
     return Datos;
