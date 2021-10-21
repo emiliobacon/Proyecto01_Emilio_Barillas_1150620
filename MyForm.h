@@ -24,6 +24,7 @@ namespace PartyMix {
 		Playlist^ Playlist1 = gcnew Playlist();
 	private: System::Windows::Forms::Label^ lblTamañoPlaylist;
 	private: System::Windows::Forms::Label^ lblMostrarPlaylist;
+	private: System::Windows::Forms::Button^ btnExportarPlaylist;
 
 	private: System::Windows::Forms::Button^ btnBorrarPlaylist;
 	public:
@@ -79,6 +80,7 @@ namespace PartyMix {
 			this->lblTamañoPlaylist = (gcnew System::Windows::Forms::Label());
 			this->btnBorrarPlaylist = (gcnew System::Windows::Forms::Button());
 			this->lblMostrarPlaylist = (gcnew System::Windows::Forms::Label());
+			this->btnExportarPlaylist = (gcnew System::Windows::Forms::Button());
 			this->SuspendLayout();
 			// 
 			// lblAhoraReproduciendo
@@ -145,11 +147,22 @@ namespace PartyMix {
 			this->lblMostrarPlaylist->Size = System::Drawing::Size(0, 13);
 			this->lblMostrarPlaylist->TabIndex = 8;
 			// 
+			// btnExportarPlaylist
+			// 
+			this->btnExportarPlaylist->Location = System::Drawing::Point(357, 51);
+			this->btnExportarPlaylist->Name = L"btnExportarPlaylist";
+			this->btnExportarPlaylist->Size = System::Drawing::Size(105, 33);
+			this->btnExportarPlaylist->TabIndex = 9;
+			this->btnExportarPlaylist->Text = L"Exportar Playlist";
+			this->btnExportarPlaylist->UseVisualStyleBackColor = true;
+			this->btnExportarPlaylist->Click += gcnew System::EventHandler(this, &MyForm::btnExportarPlaylist_Click);
+			// 
 			// MyForm
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->ClientSize = System::Drawing::Size(764, 399);
+			this->Controls->Add(this->btnExportarPlaylist);
 			this->Controls->Add(this->lblMostrarPlaylist);
 			this->Controls->Add(this->btnBorrarPlaylist);
 			this->Controls->Add(this->lblTamañoPlaylist);
@@ -239,6 +252,8 @@ private: System::Void btnBorrarPlaylist_Click(System::Object^ sender, System::Ev
 	Playlist1->Limpiar();
 	lblTamañoPlaylist->Text = "Canciones: " + Playlist1->Size();
 	lblMostrarPlaylist->Text = (Playlist1->Recorrer());
+}
+private: System::Void btnExportarPlaylist_Click(System::Object^ sender, System::EventArgs^ e) {
 }
 };
 }
