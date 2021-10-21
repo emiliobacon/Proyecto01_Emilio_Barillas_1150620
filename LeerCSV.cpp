@@ -15,14 +15,16 @@ String^ LeerCSV::Leer()
     ifstream myFile;
     myFile.open("datos.csv");
 
+    string Retorno; 
+
     while (myFile.good())
     {
         string linea; 
         getline(myFile, linea, ',');
-
-       
-        String^ retorno = gcnew String(linea.data());
         
-        return retorno;
+        Retorno += linea + '\n';
     }
+
+    String^ str3 = gcnew String(Retorno.data());
+    return str3;
 }

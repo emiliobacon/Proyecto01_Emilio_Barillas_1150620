@@ -1,16 +1,19 @@
 #pragma once
 #include "Playlist.h"
 #include "LeerCSV.h"
-
+#include <fstream>
+#include <string>
+#include <iostream>
 
 namespace PartyMix {
-
+	using namespace std; 
 	using namespace System;
 	using namespace System::ComponentModel;
 	using namespace System::Collections;
 	using namespace System::Windows::Forms;
 	using namespace System::Data;
 	using namespace System::Drawing;
+
 
 	/// <summary>
 	/// Resumen de MyForm
@@ -133,14 +136,44 @@ namespace PartyMix {
 		}
 #pragma endregion
 	private: System::Void MyForm_Load(System::Object^ sender, System::EventArgs^ e) {
-		Playlist1->Insertar("Silk", "Giselle");
-		Playlist1->Insertar("Bungalow" , "Al Bairre");
+		ifstream myFile; 
+		myFile.open("datos.csv");
+
+		while (myFile.good())
+		{
+			string linea; 
+			getline(myFile, linea, ',');
+
+			size_t pos = 0; 
+			string limitador = "-";
+			string token; 
+			while ((pos = linea.find(limitador)) != std::string::npos)
+			{
+				token = linea.substr(0, pos);
+				
+				linea.erase(0, pos + limitador.length());
+			}
+
+			if (linea == "")
+			{
+				String^ pista = gcnew String(token.data());
+				Playlist1->Insertar(pista, "DESCONOCIDO");
+
+			}
+			else
+			{
+				String^ pista = gcnew String(token.data());
+				String^ artista = gcnew String(linea.data());
+				Playlist1->Insertar(pista, artista);
+			}
+		}
 		
 		
 	}
 	
 	
-private: System::Void btnReproducir_Click(System::Object^ sender, System::EventArgs^ e) {
+
+	private: System::Void btnReproducir_Click(System::Object^ sender, System::EventArgs^ e) {
 
 
 	if (Playlist1->PilaVacia() == false)
