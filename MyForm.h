@@ -1,6 +1,6 @@
 #pragma once
 #include "Playlist.h"
-#include "LeerCSV.h"
+
 #include <fstream>
 #include <string>
 #include <iostream>
@@ -23,9 +23,10 @@ namespace PartyMix {
 	public:
 		Playlist^ Playlist1 = gcnew Playlist();
 	private: System::Windows::Forms::Label^ lblTamañoPlaylist;
+	private: System::Windows::Forms::Label^ label1;
 	private: System::Windows::Forms::Button^ btnBorrarPlaylist;
 	public:
-		LeerCSV^ Leer = gcnew LeerCSV();
+		
 
 		MyForm(void)
 		{
@@ -77,6 +78,7 @@ namespace PartyMix {
 			this->listboxPlaylist = (gcnew System::Windows::Forms::ListBox());
 			this->lblTamañoPlaylist = (gcnew System::Windows::Forms::Label());
 			this->btnBorrarPlaylist = (gcnew System::Windows::Forms::Button());
+			this->label1 = (gcnew System::Windows::Forms::Label());
 			this->SuspendLayout();
 			// 
 			// lblAhoraReproduciendo
@@ -141,11 +143,21 @@ namespace PartyMix {
 			this->btnBorrarPlaylist->UseVisualStyleBackColor = true;
 			this->btnBorrarPlaylist->Click += gcnew System::EventHandler(this, &MyForm::btnBorrarPlaylist_Click);
 			// 
+			// label1
+			// 
+			this->label1->AutoSize = true;
+			this->label1->Location = System::Drawing::Point(150, 131);
+			this->label1->Name = L"label1";
+			this->label1->Size = System::Drawing::Size(35, 13);
+			this->label1->TabIndex = 8;
+			this->label1->Text = L"label1";
+			// 
 			// MyForm
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->ClientSize = System::Drawing::Size(764, 399);
+			this->Controls->Add(this->label1);
 			this->Controls->Add(this->btnBorrarPlaylist);
 			this->Controls->Add(this->lblTamañoPlaylist);
 			this->Controls->Add(this->listboxPlaylist);
@@ -213,6 +225,7 @@ namespace PartyMix {
 	private: System::Void btnReproducir_Click(System::Object^ sender, System::EventArgs^ e) {
 	
 		lblTamañoPlaylist->Text = "Canciones: " + Playlist1->Size();
+		
 
 		if (Playlist1->PilaVacia() == false)
 		{
@@ -223,6 +236,7 @@ namespace PartyMix {
 			txtAhoraReproduciendo->Text = "Playlist Vacía";
 		}
 
+		label1->Text = Playlist1->Recorrer();
 
 }
 private: System::Void btnBorrarPlaylist_Click(System::Object^ sender, System::EventArgs^ e) {

@@ -22,15 +22,19 @@ String^ Playlist::Quitar()
     return Retorno;
 }
 
+
 String^ Playlist::Recorrer()
 {
-    if (Cabeza == nullptr)
-        return nullptr; 
-    String^ Retorno = Cabeza->Pista + " " + Cabeza->Artista; 
-    Cancion^ Top = Cabeza; 
-    Cabeza = Cabeza->Siguiente; 
-
-    return Retorno;
+    Cancion^ Recorrer = gcnew Cancion();
+    String^ Datos; 
+    Recorrer = Cabeza; 
+    while (Recorrer != nullptr)
+    {
+        Datos += Recorrer->Pista + "- " + Recorrer->Artista;
+        
+        Recorrer = Recorrer->Siguiente;
+    }
+    return Datos;
 }
 
 void Playlist::Limpiar()
