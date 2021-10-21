@@ -5,6 +5,8 @@
 #include <string>
 #include <iostream>
 
+
+
 namespace PartyMix {
 	using namespace std; 
 	using namespace System;
@@ -21,6 +23,7 @@ namespace PartyMix {
 	public ref class MyForm : public System::Windows::Forms::Form
 	{
 	public:
+		
 		Playlist^ Playlist1 = gcnew Playlist();
 	private: System::Windows::Forms::Label^ lblTamañoPlaylist;
 	private: System::Windows::Forms::Label^ lblMostrarPlaylist;
@@ -230,6 +233,13 @@ namespace PartyMix {
 	}
 	
 	
+	void MarshalString(String^ s, string& os) {
+			   using namespace Runtime::InteropServices;
+			   const char* chars =
+				   (const char*)(Marshal::StringToHGlobalAnsi(s)).ToPointer();
+			   os = chars;
+			   Marshal::FreeHGlobal(IntPtr((void*)chars));
+	}
 
 	private: System::Void btnReproducir_Click(System::Object^ sender, System::EventArgs^ e) {
 	
@@ -253,7 +263,19 @@ private: System::Void btnBorrarPlaylist_Click(System::Object^ sender, System::Ev
 	lblTamañoPlaylist->Text = "Canciones: " + Playlist1->Size();
 	lblMostrarPlaylist->Text = (Playlist1->Recorrer());
 }
-private: System::Void btnExportarPlaylist_Click(System::Object^ sender, System::EventArgs^ e) {
+	private: System::Void btnExportarPlaylist_Click(System::Object^ sender, System::EventArgs^ e) {
+		String^ datos = Playlist1->Recorrer();
+		string datosprint;
+		MarshalString(datos, datosprint);
+
+		ofstream myFile; 
+		myFile.open("list.csv");
+		myFile << datosprint;
+		myFile.close();
+		
+
+		
+	
 }
 };
 }
