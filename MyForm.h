@@ -17,6 +17,7 @@ namespace PartyMix {
 	{
 	public:
 		Playlist^ Playlist1 = gcnew Playlist();
+
 		MyForm(void)
 		{
 			InitializeComponent();
@@ -34,6 +35,12 @@ namespace PartyMix {
 				delete components;
 			}
 		}
+	private: System::Windows::Forms::Label^ lblAhoraReproduciendo;
+	protected:
+	private: System::Windows::Forms::TextBox^ txtAhoraReproduciendo;
+	private: System::Windows::Forms::Label^ lblPlaylist;
+	private: System::Windows::Forms::TextBox^ textBox1;
+	private: System::Windows::Forms::Button^ btnReproducir;
 
 
 
@@ -53,24 +60,84 @@ namespace PartyMix {
 		/// </summary>
 		void InitializeComponent(void)
 		{
+			this->lblAhoraReproduciendo = (gcnew System::Windows::Forms::Label());
+			this->txtAhoraReproduciendo = (gcnew System::Windows::Forms::TextBox());
+			this->lblPlaylist = (gcnew System::Windows::Forms::Label());
+			this->textBox1 = (gcnew System::Windows::Forms::TextBox());
+			this->btnReproducir = (gcnew System::Windows::Forms::Button());
 			this->SuspendLayout();
+			// 
+			// lblAhoraReproduciendo
+			// 
+			this->lblAhoraReproduciendo->AutoSize = true;
+			this->lblAhoraReproduciendo->Location = System::Drawing::Point(12, 9);
+			this->lblAhoraReproduciendo->Name = L"lblAhoraReproduciendo";
+			this->lblAhoraReproduciendo->Size = System::Drawing::Size(117, 13);
+			this->lblAhoraReproduciendo->TabIndex = 0;
+			this->lblAhoraReproduciendo->Text = L"Ahora Reproduciendo: ";
+			// 
+			// txtAhoraReproduciendo
+			// 
+			this->txtAhoraReproduciendo->Location = System::Drawing::Point(135, 6);
+			this->txtAhoraReproduciendo->Name = L"txtAhoraReproduciendo";
+			this->txtAhoraReproduciendo->Size = System::Drawing::Size(279, 20);
+			this->txtAhoraReproduciendo->TabIndex = 1;
+			// 
+			// lblPlaylist
+			// 
+			this->lblPlaylist->AutoSize = true;
+			this->lblPlaylist->Location = System::Drawing::Point(652, 22);
+			this->lblPlaylist->Name = L"lblPlaylist";
+			this->lblPlaylist->Size = System::Drawing::Size(39, 13);
+			this->lblPlaylist->TabIndex = 2;
+			this->lblPlaylist->Text = L"Playlist";
+			// 
+			// textBox1
+			// 
+			this->textBox1->Location = System::Drawing::Point(607, 38);
+			this->textBox1->Name = L"textBox1";
+			this->textBox1->Size = System::Drawing::Size(125, 20);
+			this->textBox1->TabIndex = 3;
+			// 
+			// btnReproducir
+			// 
+			this->btnReproducir->Location = System::Drawing::Point(135, 51);
+			this->btnReproducir->Name = L"btnReproducir";
+			this->btnReproducir->Size = System::Drawing::Size(105, 33);
+			this->btnReproducir->TabIndex = 4;
+			this->btnReproducir->Text = L"Reproducir";
+			this->btnReproducir->UseVisualStyleBackColor = true;
+			this->btnReproducir->Click += gcnew System::EventHandler(this, &MyForm::btnReproducir_Click);
 			// 
 			// MyForm
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			this->ClientSize = System::Drawing::Size(284, 261);
+			this->ClientSize = System::Drawing::Size(764, 399);
+			this->Controls->Add(this->btnReproducir);
+			this->Controls->Add(this->textBox1);
+			this->Controls->Add(this->lblPlaylist);
+			this->Controls->Add(this->txtAhoraReproduciendo);
+			this->Controls->Add(this->lblAhoraReproduciendo);
 			this->Name = L"MyForm";
 			this->Text = L"MyForm";
 			this->Load += gcnew System::EventHandler(this, &MyForm::MyForm_Load);
 			this->ResumeLayout(false);
+			this->PerformLayout();
 
 		}
 #pragma endregion
 	private: System::Void MyForm_Load(System::Object^ sender, System::EventArgs^ e) {
+		Playlist1->Insertar("Silk", "Giselle");
+		Playlist1->Insertar("Bungalow" , "Al Bairre");
 
 	}
 	
 	
+private: System::Void btnReproducir_Click(System::Object^ sender, System::EventArgs^ e) {
+
+	txtAhoraReproduciendo->Text = Playlist1->Quitar();
+
+}
 };
 }

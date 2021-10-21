@@ -7,6 +7,5 @@ public:
 	String^ Pista;
 	String^ Artista; 
 	Cancion^ Siguiente; 
-
 };
 

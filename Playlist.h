@@ -6,10 +6,10 @@ ref class Playlist
 
 public: 
 	void Insertar(String^ pista, String^ artista);
-	String^ Quitar();
 	void Limpiar();
-	bool PilaVacia();
 	int Size();
+	String^ Quitar();
 	String^ Peek();
+	bool PilaVacia();
 };
 
