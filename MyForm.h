@@ -1,6 +1,7 @@
 #pragma once
 #include "Playlist.h"
 
+
 namespace PartyMix {
 
 	using namespace System;
@@ -39,8 +40,9 @@ namespace PartyMix {
 	protected:
 	private: System::Windows::Forms::TextBox^ txtAhoraReproduciendo;
 	private: System::Windows::Forms::Label^ lblPlaylist;
-	private: System::Windows::Forms::TextBox^ textBox1;
+
 	private: System::Windows::Forms::Button^ btnReproducir;
+	private: System::Windows::Forms::ListBox^ listboxPlaylist;
 
 
 
@@ -63,8 +65,8 @@ namespace PartyMix {
 			this->lblAhoraReproduciendo = (gcnew System::Windows::Forms::Label());
 			this->txtAhoraReproduciendo = (gcnew System::Windows::Forms::TextBox());
 			this->lblPlaylist = (gcnew System::Windows::Forms::Label());
-			this->textBox1 = (gcnew System::Windows::Forms::TextBox());
 			this->btnReproducir = (gcnew System::Windows::Forms::Button());
+			this->listboxPlaylist = (gcnew System::Windows::Forms::ListBox());
 			this->SuspendLayout();
 			// 
 			// lblAhoraReproduciendo
@@ -92,13 +94,6 @@ namespace PartyMix {
 			this->lblPlaylist->TabIndex = 2;
 			this->lblPlaylist->Text = L"Playlist";
 			// 
-			// textBox1
-			// 
-			this->textBox1->Location = System::Drawing::Point(607, 38);
-			this->textBox1->Name = L"textBox1";
-			this->textBox1->Size = System::Drawing::Size(125, 20);
-			this->textBox1->TabIndex = 3;
-			// 
 			// btnReproducir
 			// 
 			this->btnReproducir->Location = System::Drawing::Point(135, 51);
@@ -109,13 +104,21 @@ namespace PartyMix {
 			this->btnReproducir->UseVisualStyleBackColor = true;
 			this->btnReproducir->Click += gcnew System::EventHandler(this, &MyForm::btnReproducir_Click);
 			// 
+			// listboxPlaylist
+			// 
+			this->listboxPlaylist->FormattingEnabled = true;
+			this->listboxPlaylist->Location = System::Drawing::Point(600, 38);
+			this->listboxPlaylist->Name = L"listboxPlaylist";
+			this->listboxPlaylist->Size = System::Drawing::Size(140, 342);
+			this->listboxPlaylist->TabIndex = 5;
+			// 
 			// MyForm
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->ClientSize = System::Drawing::Size(764, 399);
+			this->Controls->Add(this->listboxPlaylist);
 			this->Controls->Add(this->btnReproducir);
-			this->Controls->Add(this->textBox1);
 			this->Controls->Add(this->lblPlaylist);
 			this->Controls->Add(this->txtAhoraReproduciendo);
 			this->Controls->Add(this->lblAhoraReproduciendo);
@@ -136,7 +139,16 @@ namespace PartyMix {
 	
 private: System::Void btnReproducir_Click(System::Object^ sender, System::EventArgs^ e) {
 
-	txtAhoraReproduciendo->Text = Playlist1->Quitar();
+
+	if (Playlist1->PilaVacia() == false)
+	{
+		txtAhoraReproduciendo->Text = Playlist1->Quitar();
+	}
+	else
+	{
+		txtAhoraReproduciendo->Text = "Playlist Vacía";
+	}
+
 
 }
 };

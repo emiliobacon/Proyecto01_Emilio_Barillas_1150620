@@ -121,11 +121,13 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Cancion.cpp" />
+    <ClCompile Include="LeerCSV.cpp" />
     <ClCompile Include="MyForm.cpp" />
     <ClCompile Include="Playlist.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Cancion.h" />
+    <ClInclude Include="LeerCSV.h" />
     <ClInclude Include="MyForm.h">
       <FileType>CppForm</FileType>
     </ClInclude>
