@@ -1,5 +1,6 @@
 #pragma once
 #include "Playlist.h"
+#include "LeerCSV.h"
 
 
 namespace PartyMix {
@@ -18,6 +19,7 @@ namespace PartyMix {
 	{
 	public:
 		Playlist^ Playlist1 = gcnew Playlist();
+		LeerCSV^ Leer = gcnew LeerCSV();
 
 		MyForm(void)
 		{
@@ -133,7 +135,8 @@ namespace PartyMix {
 	private: System::Void MyForm_Load(System::Object^ sender, System::EventArgs^ e) {
 		Playlist1->Insertar("Silk", "Giselle");
 		Playlist1->Insertar("Bungalow" , "Al Bairre");
-
+		
+		
 	}
 	
 	

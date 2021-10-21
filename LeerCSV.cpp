@@ -1,13 +1,28 @@
 #include "LeerCSV.h"
+#include "Playlist.h"
+
 #include <fstream>
+#include <string>
+#include <string>
+#include <iostream>
+
 
 using namespace System;
 using namespace std; 
 
-int LeerCSV::main()
+String^ LeerCSV::Leer()
 {
     ifstream myFile;
     myFile.open("datos.csv");
 
-    return 0;
+    while (myFile.good())
+    {
+        string linea; 
+        getline(myFile, linea, ',');
+
+       
+        String^ retorno = gcnew String(linea.data());
+        
+        return retorno;
+    }
 }
