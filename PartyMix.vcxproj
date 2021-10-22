@@ -124,6 +124,7 @@
     <ClCompile Include="Imprimir.cpp" />
     <ClCompile Include="MyForm.cpp" />
     <ClCompile Include="Playlist.cpp" />
+    <ClCompile Include="Queue.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Cancion.h" />
@@ -132,6 +133,7 @@
       <FileType>CppForm</FileType>
     </ClInclude>
     <ClInclude Include="Playlist.h" />
+    <ClInclude Include="Queue.h" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="MyForm.resx">

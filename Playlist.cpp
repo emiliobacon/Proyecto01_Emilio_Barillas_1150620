@@ -20,7 +20,7 @@ String^ Playlist::Quitar()
 {
     if (Cabeza == nullptr)
         return nullptr; 
-    String^ Retorno = Cabeza->Pista + " " + Cabeza->Artista;
+    String^ Retorno = Cabeza->Pista + "-" + Cabeza->Artista;
     
     Cancion^ Top = Cabeza; 
     Cabeza = Cabeza->Siguiente; 

@@ -1,6 +1,7 @@
 #pragma once
 #include "Playlist.h"
 #include "Imprimir.h"
+#include "Queue.h"
 #include <fstream>
 #include <string>
 #include <iostream>
@@ -26,10 +27,30 @@ namespace PartyMix {
 		
 		Playlist^ Playlist1 = gcnew Playlist();
 		Imprimir^ Print = gcnew Imprimir();
+		Cola^ Queue = gcnew Cola();
+		
 
 	private: System::Windows::Forms::Label^ lblTamañoPlaylist;
 	private: System::Windows::Forms::Label^ lblMostrarPlaylist;
+	private: System::Windows::Forms::TextBox^ txtTituloCola;
+	private: System::Windows::Forms::TextBox^ txtArtistaCola;
+
+
+	private: System::Windows::Forms::Label^ lblTitulo;
+	private: System::Windows::Forms::Label^ lblArtista;
+	private: System::Windows::Forms::Label^ lblBuscarCanciones;
 	private: System::Windows::Forms::Button^ btnExportarPlaylist;
+	private: System::Windows::Forms::Button^ btnAgregaraCola;
+	private: System::Windows::Forms::Label^ lblMostrarCola;
+	private: System::Windows::Forms::Label^ lblCola;
+	private: System::Windows::Forms::Label^ lblCancionesCola;
+	private: System::Windows::Forms::Button^ btnBorrarCola;
+	private: System::Windows::Forms::Button^ btnDesencolar;
+	private: System::Windows::Forms::Button^ btnReproducirAnterior;
+	private: System::Windows::Forms::Button^ btnReproducirSiguiente;
+
+
+
 
 	private: System::Windows::Forms::Button^ btnBorrarPlaylist;
 	public:
@@ -85,7 +106,20 @@ namespace PartyMix {
 			this->lblTamañoPlaylist = (gcnew System::Windows::Forms::Label());
 			this->btnBorrarPlaylist = (gcnew System::Windows::Forms::Button());
 			this->lblMostrarPlaylist = (gcnew System::Windows::Forms::Label());
+			this->txtTituloCola = (gcnew System::Windows::Forms::TextBox());
+			this->txtArtistaCola = (gcnew System::Windows::Forms::TextBox());
+			this->lblTitulo = (gcnew System::Windows::Forms::Label());
+			this->lblArtista = (gcnew System::Windows::Forms::Label());
+			this->lblBuscarCanciones = (gcnew System::Windows::Forms::Label());
 			this->btnExportarPlaylist = (gcnew System::Windows::Forms::Button());
+			this->btnAgregaraCola = (gcnew System::Windows::Forms::Button());
+			this->lblMostrarCola = (gcnew System::Windows::Forms::Label());
+			this->lblCola = (gcnew System::Windows::Forms::Label());
+			this->lblCancionesCola = (gcnew System::Windows::Forms::Label());
+			this->btnBorrarCola = (gcnew System::Windows::Forms::Button());
+			this->btnDesencolar = (gcnew System::Windows::Forms::Button());
+			this->btnReproducirAnterior = (gcnew System::Windows::Forms::Button());
+			this->btnReproducirSiguiente = (gcnew System::Windows::Forms::Button());
 			this->SuspendLayout();
 			// 
 			// lblAhoraReproduciendo
@@ -99,6 +133,7 @@ namespace PartyMix {
 			// 
 			// txtAhoraReproduciendo
 			// 
+			this->txtAhoraReproduciendo->Enabled = false;
 			this->txtAhoraReproduciendo->Location = System::Drawing::Point(135, 6);
 			this->txtAhoraReproduciendo->Name = L"txtAhoraReproduciendo";
 			this->txtAhoraReproduciendo->Size = System::Drawing::Size(279, 20);
@@ -152,6 +187,47 @@ namespace PartyMix {
 			this->lblMostrarPlaylist->Size = System::Drawing::Size(0, 13);
 			this->lblMostrarPlaylist->TabIndex = 8;
 			// 
+			// txtTituloCola
+			// 
+			this->txtTituloCola->Location = System::Drawing::Point(538, 51);
+			this->txtTituloCola->Name = L"txtTituloCola";
+			this->txtTituloCola->Size = System::Drawing::Size(98, 20);
+			this->txtTituloCola->TabIndex = 10;
+			// 
+			// txtArtistaCola
+			// 
+			this->txtArtistaCola->Location = System::Drawing::Point(656, 51);
+			this->txtArtistaCola->Name = L"txtArtistaCola";
+			this->txtArtistaCola->Size = System::Drawing::Size(98, 20);
+			this->txtArtistaCola->TabIndex = 11;
+			// 
+			// lblTitulo
+			// 
+			this->lblTitulo->AutoSize = true;
+			this->lblTitulo->Location = System::Drawing::Point(535, 35);
+			this->lblTitulo->Name = L"lblTitulo";
+			this->lblTitulo->Size = System::Drawing::Size(35, 13);
+			this->lblTitulo->TabIndex = 12;
+			this->lblTitulo->Text = L"Título";
+			// 
+			// lblArtista
+			// 
+			this->lblArtista->AutoSize = true;
+			this->lblArtista->Location = System::Drawing::Point(653, 35);
+			this->lblArtista->Name = L"lblArtista";
+			this->lblArtista->Size = System::Drawing::Size(36, 13);
+			this->lblArtista->TabIndex = 13;
+			this->lblArtista->Text = L"Artista";
+			// 
+			// lblBuscarCanciones
+			// 
+			this->lblBuscarCanciones->AutoSize = true;
+			this->lblBuscarCanciones->Location = System::Drawing::Point(535, 13);
+			this->lblBuscarCanciones->Name = L"lblBuscarCanciones";
+			this->lblBuscarCanciones->Size = System::Drawing::Size(93, 13);
+			this->lblBuscarCanciones->TabIndex = 14;
+			this->lblBuscarCanciones->Text = L"Buscar Canciones";
+			// 
 			// btnExportarPlaylist
 			// 
 			this->btnExportarPlaylist->Location = System::Drawing::Point(357, 51);
@@ -162,11 +238,101 @@ namespace PartyMix {
 			this->btnExportarPlaylist->UseVisualStyleBackColor = true;
 			this->btnExportarPlaylist->Click += gcnew System::EventHandler(this, &MyForm::btnExportarPlaylist_Click);
 			// 
+			// btnAgregaraCola
+			// 
+			this->btnAgregaraCola->Location = System::Drawing::Point(538, 77);
+			this->btnAgregaraCola->Name = L"btnAgregaraCola";
+			this->btnAgregaraCola->Size = System::Drawing::Size(105, 33);
+			this->btnAgregaraCola->TabIndex = 15;
+			this->btnAgregaraCola->Text = L"Agregar a la Cola";
+			this->btnAgregaraCola->UseVisualStyleBackColor = true;
+			this->btnAgregaraCola->Click += gcnew System::EventHandler(this, &MyForm::btnAgregaraCola_Click);
+			// 
+			// lblMostrarCola
+			// 
+			this->lblMostrarCola->AutoSize = true;
+			this->lblMostrarCola->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 8.25F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->lblMostrarCola->Location = System::Drawing::Point(535, 204);
+			this->lblMostrarCola->Name = L"lblMostrarCola";
+			this->lblMostrarCola->Size = System::Drawing::Size(0, 13);
+			this->lblMostrarCola->TabIndex = 16;
+			// 
+			// lblCola
+			// 
+			this->lblCola->AutoSize = true;
+			this->lblCola->Location = System::Drawing::Point(535, 161);
+			this->lblCola->Name = L"lblCola";
+			this->lblCola->Size = System::Drawing::Size(28, 13);
+			this->lblCola->TabIndex = 17;
+			this->lblCola->Text = L"Cola";
+			// 
+			// lblCancionesCola
+			// 
+			this->lblCancionesCola->AutoSize = true;
+			this->lblCancionesCola->Location = System::Drawing::Point(535, 177);
+			this->lblCancionesCola->Name = L"lblCancionesCola";
+			this->lblCancionesCola->Size = System::Drawing::Size(63, 13);
+			this->lblCancionesCola->TabIndex = 18;
+			this->lblCancionesCola->Text = L"Canciones: ";
+			// 
+			// btnBorrarCola
+			// 
+			this->btnBorrarCola->Location = System::Drawing::Point(656, 116);
+			this->btnBorrarCola->Name = L"btnBorrarCola";
+			this->btnBorrarCola->Size = System::Drawing::Size(105, 33);
+			this->btnBorrarCola->TabIndex = 19;
+			this->btnBorrarCola->Text = L"Borrar Cola";
+			this->btnBorrarCola->UseVisualStyleBackColor = true;
+			this->btnBorrarCola->Click += gcnew System::EventHandler(this, &MyForm::btnBorrarCola_Click);
+			// 
+			// btnDesencolar
+			// 
+			this->btnDesencolar->Location = System::Drawing::Point(538, 116);
+			this->btnDesencolar->Name = L"btnDesencolar";
+			this->btnDesencolar->Size = System::Drawing::Size(105, 33);
+			this->btnDesencolar->TabIndex = 20;
+			this->btnDesencolar->Text = L"Eliminar de la Cola";
+			this->btnDesencolar->UseVisualStyleBackColor = true;
+			this->btnDesencolar->Click += gcnew System::EventHandler(this, &MyForm::btnDesencolar_Click);
+			// 
+			// btnReproducirAnterior
+			// 
+			this->btnReproducirAnterior->Location = System::Drawing::Point(538, 312);
+			this->btnReproducirAnterior->Name = L"btnReproducirAnterior";
+			this->btnReproducirAnterior->Size = System::Drawing::Size(105, 47);
+			this->btnReproducirAnterior->TabIndex = 21;
+			this->btnReproducirAnterior->Text = L"Reproducir Anterior";
+			this->btnReproducirAnterior->UseVisualStyleBackColor = true;
+			// 
+			// btnReproducirSiguiente
+			// 
+			this->btnReproducirSiguiente->Location = System::Drawing::Point(649, 312);
+			this->btnReproducirSiguiente->Name = L"btnReproducirSiguiente";
+			this->btnReproducirSiguiente->Size = System::Drawing::Size(105, 47);
+			this->btnReproducirSiguiente->TabIndex = 22;
+			this->btnReproducirSiguiente->Text = L"Reproducir Siguiente";
+			this->btnReproducirSiguiente->UseVisualStyleBackColor = true;
+			this->btnReproducirSiguiente->Click += gcnew System::EventHandler(this, &MyForm::btnReproducirSiguiente_Click);
+			// 
 			// MyForm
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			this->ClientSize = System::Drawing::Size(764, 399);
+			this->ClientSize = System::Drawing::Size(889, 399);
+			this->Controls->Add(this->btnReproducirSiguiente);
+			this->Controls->Add(this->btnReproducirAnterior);
+			this->Controls->Add(this->btnDesencolar);
+			this->Controls->Add(this->btnBorrarCola);
+			this->Controls->Add(this->lblCancionesCola);
+			this->Controls->Add(this->lblCola);
+			this->Controls->Add(this->lblMostrarCola);
+			this->Controls->Add(this->btnAgregaraCola);
+			this->Controls->Add(this->lblBuscarCanciones);
+			this->Controls->Add(this->lblArtista);
+			this->Controls->Add(this->lblTitulo);
+			this->Controls->Add(this->txtArtistaCola);
+			this->Controls->Add(this->txtTituloCola);
 			this->Controls->Add(this->btnExportarPlaylist);
 			this->Controls->Add(this->lblMostrarPlaylist);
 			this->Controls->Add(this->btnBorrarPlaylist);
@@ -176,7 +342,7 @@ namespace PartyMix {
 			this->Controls->Add(this->txtAhoraReproduciendo);
 			this->Controls->Add(this->lblAhoraReproduciendo);
 			this->Name = L"MyForm";
-			this->Text = L"MyForm";
+			this->Text = L"Spotify";
 			this->Load += gcnew System::EventHandler(this, &MyForm::MyForm_Load);
 			this->ResumeLayout(false);
 			this->PerformLayout();
@@ -231,16 +397,15 @@ namespace PartyMix {
 
 		lblTamañoPlaylist->Text = "Canciones: " + Playlist1->Size();
 		lblMostrarPlaylist->Text = (Playlist1->Recorrer());
+		lblCancionesCola->Text = "Canciones: " + Queue->Tamano();
 		
 	}
 	
 	
 	
 
-	private: System::Void btnReproducir_Click(System::Object^ sender, System::EventArgs^ e) {
+private: System::Void btnReproducir_Click(System::Object^ sender, System::EventArgs^ e) {
 	
-		lblTamañoPlaylist->Text = "Canciones: " + Playlist1->Size();
-
 		if (Playlist1->PilaVacia() == false)
 		{
 			txtAhoraReproduciendo->Text = Playlist1->Quitar();
@@ -251,6 +416,11 @@ namespace PartyMix {
 		}
 
 		lblMostrarPlaylist->Text = (Playlist1->Recorrer());
+		lblTamañoPlaylist->Text = "Canciones: " + Playlist1->Size();
+		if (Playlist1->PilaVacia() == true)
+		{
+			lblMostrarPlaylist->Text = "Playlist Vacía";
+		}
 
 }
 private: System::Void btnBorrarPlaylist_Click(System::Object^ sender, System::EventArgs^ e) {
@@ -258,11 +428,52 @@ private: System::Void btnBorrarPlaylist_Click(System::Object^ sender, System::Ev
 	Playlist1->Limpiar();
 	lblTamañoPlaylist->Text = "Canciones: " + Playlist1->Size();
 	lblMostrarPlaylist->Text = (Playlist1->Recorrer());
+	lblMostrarPlaylist->Text = "Playlist Vacía";
 }
-	private: System::Void btnExportarPlaylist_Click(System::Object^ sender, System::EventArgs^ e) {
+private: System::Void btnExportarPlaylist_Click(System::Object^ sender, System::EventArgs^ e) {
 
 		Print->Exportar(Playlist1->Recorrer());
 		MessageBox::Show("Archivo .csv exportado correctamente.");
+}
+private: System::Void btnAgregaraCola_Click(System::Object^ sender, System::EventArgs^ e) {
+	
+	Queue->EnColar(txtTituloCola->Text, txtArtistaCola->Text);
+	lblMostrarCola->Text = Queue->Recorrer();
+	txtTituloCola->Text = "";
+	txtArtistaCola->Text = "";
+	lblCancionesCola->Text = "Canciones: " + Queue->Tamano();
+}
+private: System::Void btnBorrarCola_Click(System::Object^ sender, System::EventArgs^ e) {
+	Queue->Limpiar();
+	lblCancionesCola->Text = "Canciones: " + Queue->Tamano();
+	
+	if (Queue->ColaVacia() == true) 
+	{
+		lblMostrarCola->Text = "Cola Vacía";
+	}
+}
+private: System::Void btnDesencolar_Click(System::Object^ sender, System::EventArgs^ e) {
+
+	Queue->Desencolar();
+	lblMostrarCola->Text = Queue->Recorrer();
+	lblCancionesCola->Text = "Canciones: " + Queue->Tamano();
+	if (Queue->ColaVacia() == true)
+	{
+		lblMostrarCola->Text = "Cola Vacía";
+	}
+
+}
+
+
+private: System::Void btnReproducirSiguiente_Click(System::Object^ sender, System::EventArgs^ e) {
+	txtAhoraReproduciendo->Text = Queue->Desencolar();
+	lblMostrarCola->Text = Queue->Recorrer();
+	lblCancionesCola->Text = "Canciones: " + Queue->Tamano();
+	
+	if (Queue->ColaVacia() == true)
+	{
+		lblMostrarCola->Text = "Cola Vacía";
+	}
 }
 };
 }
