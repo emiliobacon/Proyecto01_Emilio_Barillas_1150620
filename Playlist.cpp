@@ -16,6 +16,14 @@ void Playlist::Insertar(String^ pista, String^ artista)
     Cabeza = Nuevo; 
 }
 
+void Playlist::Insertar(String^ datos)
+{
+    Cancion^ Nuevo = gcnew Cancion();
+    Nuevo->Artista = datos; 
+    Nuevo->Siguiente = Cabeza;
+    Cabeza = Nuevo;
+}
+
 String^ Playlist::Quitar()
 {
     if (Cabeza == nullptr)
@@ -38,6 +46,19 @@ String^ Playlist::Recorrer()
     while (Recorrer != nullptr)
     {
         Datos += Recorrer->Pista + "-" + Recorrer->Artista + "\n";
+        Recorrer = Recorrer->Siguiente;
+    }
+    return Datos;
+}
+
+String^ Playlist::Imprimir()
+{
+    Cancion^ Recorrer = gcnew Cancion();
+    String^ Datos;
+    Recorrer = Cabeza;
+    while (Recorrer != nullptr)
+    {
+        Datos += Recorrer->Artista + "\n";
         Recorrer = Recorrer->Siguiente;
     }
     return Datos;

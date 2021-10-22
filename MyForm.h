@@ -26,6 +26,7 @@ namespace PartyMix {
 	public:
 		
 		Playlist^ Playlist1 = gcnew Playlist();
+		Playlist^ Anteriores = gcnew Playlist();
 		Imprimir^ Print = gcnew Imprimir();
 		Cola^ Queue = gcnew Cola();
 		
@@ -48,6 +49,8 @@ namespace PartyMix {
 	private: System::Windows::Forms::Button^ btnDesencolar;
 	private: System::Windows::Forms::Button^ btnReproducirAnterior;
 	private: System::Windows::Forms::Button^ btnReproducirSiguiente;
+	private: System::Windows::Forms::Label^ label1;
+	private: System::Windows::Forms::Label^ lblRecienSonadas;
 
 
 
@@ -122,6 +125,8 @@ namespace PartyMix {
 			this->btnDesencolar = (gcnew System::Windows::Forms::Button());
 			this->btnReproducirAnterior = (gcnew System::Windows::Forms::Button());
 			this->btnReproducirSiguiente = (gcnew System::Windows::Forms::Button());
+			this->label1 = (gcnew System::Windows::Forms::Label());
+			this->lblRecienSonadas = (gcnew System::Windows::Forms::Label());
 			this->SuspendLayout();
 			// 
 			// lblAhoraReproduciendo
@@ -316,6 +321,7 @@ namespace PartyMix {
 			this->btnReproducirAnterior->TabIndex = 21;
 			this->btnReproducirAnterior->Text = L"Reproducir Anterior";
 			this->btnReproducirAnterior->UseVisualStyleBackColor = true;
+			this->btnReproducirAnterior->Click += gcnew System::EventHandler(this, &MyForm::btnReproducirAnterior_Click);
 			// 
 			// btnReproducirSiguiente
 			// 
@@ -327,6 +333,29 @@ namespace PartyMix {
 			this->btnReproducirSiguiente->UseVisualStyleBackColor = true;
 			this->btnReproducirSiguiente->Click += gcnew System::EventHandler(this, &MyForm::btnReproducirSiguiente_Click);
 			// 
+			// label1
+			// 
+			this->label1->AutoSize = true;
+			this->label1->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 8.25F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->label1->ForeColor = System::Drawing::SystemColors::ButtonFace;
+			this->label1->Location = System::Drawing::Point(12, 261);
+			this->label1->Name = L"label1";
+			this->label1->Size = System::Drawing::Size(104, 13);
+			this->label1->TabIndex = 23;
+			this->label1->Text = L"Recién Sonadas:";
+			// 
+			// lblRecienSonadas
+			// 
+			this->lblRecienSonadas->AutoSize = true;
+			this->lblRecienSonadas->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 8.25F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->lblRecienSonadas->ForeColor = System::Drawing::SystemColors::ButtonFace;
+			this->lblRecienSonadas->Location = System::Drawing::Point(12, 284);
+			this->lblRecienSonadas->Name = L"lblRecienSonadas";
+			this->lblRecienSonadas->Size = System::Drawing::Size(0, 13);
+			this->lblRecienSonadas->TabIndex = 24;
+			// 
 			// MyForm
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
@@ -334,6 +363,8 @@ namespace PartyMix {
 			this->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(64)), static_cast<System::Int32>(static_cast<System::Byte>(64)),
 				static_cast<System::Int32>(static_cast<System::Byte>(64)));
 			this->ClientSize = System::Drawing::Size(889, 399);
+			this->Controls->Add(this->lblRecienSonadas);
+			this->Controls->Add(this->label1);
 			this->Controls->Add(this->lblMostrarPlaylist);
 			this->Controls->Add(this->lblPlaylist);
 			this->Controls->Add(this->lblTamañoPlaylist);
@@ -423,19 +454,33 @@ private: System::Void btnReproducir_Click(System::Object^ sender, System::EventA
 	
 		if (Playlist1->PilaVacia() == false)
 		{
-			txtAhoraReproduciendo->Text = Playlist1->Quitar();
+			String^ Sonada = Playlist1->Quitar();
+			txtAhoraReproduciendo->Text = Sonada;
+			lblMostrarPlaylist->Text = (Playlist1->Recorrer());
+			lblTamañoPlaylist->Text = "Canciones: " + Playlist1->Size();
+			Anteriores->Insertar(Sonada);
+			lblRecienSonadas->Text = Anteriores->Imprimir();
 		}
 		else
 		{
 			txtAhoraReproduciendo->Text = "Playlist Vacía";
+			lblMostrarPlaylist->Text = "Playlist Vacía";
 		}
 
-		lblMostrarPlaylist->Text = (Playlist1->Recorrer());
+		
+		if (Playlist1->PilaVacia() == true)
+		{
+			
+		}
+		
+		
+		
+		/*lblMostrarPlaylist->Text = (Playlist1->Recorrer());
 		lblTamañoPlaylist->Text = "Canciones: " + Playlist1->Size();
 		if (Playlist1->PilaVacia() == true)
 		{
 			lblMostrarPlaylist->Text = "Playlist Vacía";
-		}
+		}*/
 
 }
 private: System::Void btnBorrarPlaylist_Click(System::Object^ sender, System::EventArgs^ e) {
@@ -485,15 +530,35 @@ private: System::Void btnDesencolar_Click(System::Object^ sender, System::EventA
 
 
 private: System::Void btnReproducirSiguiente_Click(System::Object^ sender, System::EventArgs^ e) {
-	txtAhoraReproduciendo->Text = Queue->Desencolar();
-	lblMostrarCola->Text = Queue->Recorrer();
-	lblCancionesCola->Text = "Canciones: " + Queue->Tamano();
+	
 	
 	if (Queue->ColaVacia() == true)
 	{
 		lblMostrarCola->Text = "Cola Vacía";
+		txtAhoraReproduciendo->Text = "";
 	}
+	else
+	{
+		String^ RecienOido = Queue->Desencolar();
+		txtAhoraReproduciendo->Text = RecienOido;
+
+		lblMostrarCola->Text = Queue->Recorrer();
+		
+		lblCancionesCola->Text = "Canciones: " + Queue->Tamano();
+		Anteriores->Insertar(RecienOido);
+		lblRecienSonadas->Text = Anteriores->Imprimir();
+	}
+	
 }
 	   
+private: System::Void btnReproducirAnterior_Click(System::Object^ sender, System::EventArgs^ e) {
+	if (!Anteriores->PilaVacia())
+	{
+		txtAhoraReproduciendo->Text = Anteriores->Quitar();
+		lblRecienSonadas->Text = Anteriores->Imprimir();
+	}
+	else
+		MessageBox::Show("No hay canciones");
+}
 };
 }
