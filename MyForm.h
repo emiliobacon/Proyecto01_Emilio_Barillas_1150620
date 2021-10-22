@@ -1,6 +1,6 @@
 #pragma once
 #include "Playlist.h"
-
+#include "Imprimir.h"
 #include <fstream>
 #include <string>
 #include <iostream>
@@ -25,6 +25,8 @@ namespace PartyMix {
 	public:
 		
 		Playlist^ Playlist1 = gcnew Playlist();
+		Imprimir^ Print = gcnew Imprimir();
+
 	private: System::Windows::Forms::Label^ lblTamañoPlaylist;
 	private: System::Windows::Forms::Label^ lblMostrarPlaylist;
 	private: System::Windows::Forms::Button^ btnExportarPlaylist;
@@ -233,13 +235,7 @@ namespace PartyMix {
 	}
 	
 	
-	void MarshalString(String^ s, string& os) {
-			   using namespace Runtime::InteropServices;
-			   const char* chars =
-				   (const char*)(Marshal::StringToHGlobalAnsi(s)).ToPointer();
-			   os = chars;
-			   Marshal::FreeHGlobal(IntPtr((void*)chars));
-	}
+	
 
 	private: System::Void btnReproducir_Click(System::Object^ sender, System::EventArgs^ e) {
 	
@@ -264,18 +260,9 @@ private: System::Void btnBorrarPlaylist_Click(System::Object^ sender, System::Ev
 	lblMostrarPlaylist->Text = (Playlist1->Recorrer());
 }
 	private: System::Void btnExportarPlaylist_Click(System::Object^ sender, System::EventArgs^ e) {
-		String^ datos = Playlist1->Recorrer();
-		string datosprint;
-		MarshalString(datos, datosprint);
 
-		ofstream myFile; 
-		myFile.open("list.csv");
-		myFile << datosprint;
-		myFile.close();
-		
-
-		
-	
+		Print->Exportar(Playlist1->Recorrer());
+		MessageBox::Show("Archivo .csv exportado correctamente.");
 }
 };
 }
