@@ -474,6 +474,10 @@ private: System::Void btnReproducir_Click(System::Object^ sender, System::EventA
 			Anteriores->Insertar(Sonada);
 			lblRecienSonadas->Text = Anteriores->Imprimir();
 		}
+		else if(!Queue->ColaVacia())
+		{
+			Sync();
+		}
 		else
 		{
 			txtAhoraReproduciendo->Text = "Playlist Vacía";
@@ -558,7 +562,10 @@ private: System::Void btnReproducirAnterior_Click(System::Object^ sender, System
 		MessageBox::Show("No hay canciones");
 }
 private: System::Void btnSync_Click(System::Object^ sender, System::EventArgs^ e) {
+	Sync();	
+}
 
+void Sync() {
 	while (!Queue->ColaVacia())
 	{
 		Playlist1->Insertar(Queue->Desencolar());
@@ -568,7 +575,6 @@ private: System::Void btnSync_Click(System::Object^ sender, System::EventArgs^ e
 		lblTamañoPlaylist->Text = "Canciones: " + Playlist1->Size();
 
 	}
-	
 }
 };
 }
