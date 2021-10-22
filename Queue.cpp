@@ -42,7 +42,7 @@ String^ Cola::Desencolar()
         
     }
     
-    return Retorno; 
+    return Eliminado; 
 }
 
 int Cola::Tamano()

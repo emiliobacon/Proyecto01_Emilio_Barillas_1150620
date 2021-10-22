@@ -52,6 +52,7 @@ namespace PartyMix {
 
 
 
+
 	private: System::Windows::Forms::Button^ btnBorrarPlaylist;
 	public:
 		
@@ -99,6 +100,7 @@ namespace PartyMix {
 		/// </summary>
 		void InitializeComponent(void)
 		{
+			System::ComponentModel::ComponentResourceManager^ resources = (gcnew System::ComponentModel::ComponentResourceManager(MyForm::typeid));
 			this->lblAhoraReproduciendo = (gcnew System::Windows::Forms::Label());
 			this->txtAhoraReproduciendo = (gcnew System::Windows::Forms::TextBox());
 			this->lblPlaylist = (gcnew System::Windows::Forms::Label());
@@ -125,16 +127,19 @@ namespace PartyMix {
 			// lblAhoraReproduciendo
 			// 
 			this->lblAhoraReproduciendo->AutoSize = true;
+			this->lblAhoraReproduciendo->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 8.25F, System::Drawing::FontStyle::Bold,
+				System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
+			this->lblAhoraReproduciendo->ForeColor = System::Drawing::SystemColors::ButtonFace;
 			this->lblAhoraReproduciendo->Location = System::Drawing::Point(12, 9);
 			this->lblAhoraReproduciendo->Name = L"lblAhoraReproduciendo";
-			this->lblAhoraReproduciendo->Size = System::Drawing::Size(117, 13);
+			this->lblAhoraReproduciendo->Size = System::Drawing::Size(138, 13);
 			this->lblAhoraReproduciendo->TabIndex = 0;
 			this->lblAhoraReproduciendo->Text = L"Ahora Reproduciendo: ";
 			// 
 			// txtAhoraReproduciendo
 			// 
 			this->txtAhoraReproduciendo->Enabled = false;
-			this->txtAhoraReproduciendo->Location = System::Drawing::Point(135, 6);
+			this->txtAhoraReproduciendo->Location = System::Drawing::Point(145, 6);
 			this->txtAhoraReproduciendo->Name = L"txtAhoraReproduciendo";
 			this->txtAhoraReproduciendo->Size = System::Drawing::Size(279, 20);
 			this->txtAhoraReproduciendo->TabIndex = 1;
@@ -142,7 +147,8 @@ namespace PartyMix {
 			// lblPlaylist
 			// 
 			this->lblPlaylist->AutoSize = true;
-			this->lblPlaylist->Location = System::Drawing::Point(12, 107);
+			this->lblPlaylist->ForeColor = System::Drawing::Color::White;
+			this->lblPlaylist->Location = System::Drawing::Point(12, 120);
 			this->lblPlaylist->Name = L"lblPlaylist";
 			this->lblPlaylist->Size = System::Drawing::Size(39, 13);
 			this->lblPlaylist->TabIndex = 2;
@@ -150,18 +156,23 @@ namespace PartyMix {
 			// 
 			// btnReproducir
 			// 
+			this->btnReproducir->BackColor = System::Drawing::Color::LimeGreen;
+			this->btnReproducir->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 8.25F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->btnReproducir->ForeColor = System::Drawing::SystemColors::ButtonFace;
 			this->btnReproducir->Location = System::Drawing::Point(135, 51);
 			this->btnReproducir->Name = L"btnReproducir";
 			this->btnReproducir->Size = System::Drawing::Size(105, 33);
 			this->btnReproducir->TabIndex = 4;
 			this->btnReproducir->Text = L"Reproducir";
-			this->btnReproducir->UseVisualStyleBackColor = true;
+			this->btnReproducir->UseVisualStyleBackColor = false;
 			this->btnReproducir->Click += gcnew System::EventHandler(this, &MyForm::btnReproducir_Click);
 			// 
 			// lblTamañoPlaylist
 			// 
 			this->lblTamañoPlaylist->AutoSize = true;
-			this->lblTamañoPlaylist->Location = System::Drawing::Point(12, 123);
+			this->lblTamañoPlaylist->ForeColor = System::Drawing::Color::White;
+			this->lblTamañoPlaylist->Location = System::Drawing::Point(12, 136);
 			this->lblTamañoPlaylist->Name = L"lblTamañoPlaylist";
 			this->lblTamañoPlaylist->Size = System::Drawing::Size(66, 13);
 			this->lblTamañoPlaylist->TabIndex = 6;
@@ -182,7 +193,8 @@ namespace PartyMix {
 			this->lblMostrarPlaylist->AutoSize = true;
 			this->lblMostrarPlaylist->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 8.25F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->lblMostrarPlaylist->Location = System::Drawing::Point(12, 146);
+			this->lblMostrarPlaylist->ForeColor = System::Drawing::Color::White;
+			this->lblMostrarPlaylist->Location = System::Drawing::Point(12, 161);
 			this->lblMostrarPlaylist->Name = L"lblMostrarPlaylist";
 			this->lblMostrarPlaylist->Size = System::Drawing::Size(0, 13);
 			this->lblMostrarPlaylist->TabIndex = 8;
@@ -319,7 +331,12 @@ namespace PartyMix {
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
+			this->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(64)), static_cast<System::Int32>(static_cast<System::Byte>(64)),
+				static_cast<System::Int32>(static_cast<System::Byte>(64)));
 			this->ClientSize = System::Drawing::Size(889, 399);
+			this->Controls->Add(this->lblMostrarPlaylist);
+			this->Controls->Add(this->lblPlaylist);
+			this->Controls->Add(this->lblTamañoPlaylist);
 			this->Controls->Add(this->btnReproducirSiguiente);
 			this->Controls->Add(this->btnReproducirAnterior);
 			this->Controls->Add(this->btnDesencolar);
@@ -334,13 +351,11 @@ namespace PartyMix {
 			this->Controls->Add(this->txtArtistaCola);
 			this->Controls->Add(this->txtTituloCola);
 			this->Controls->Add(this->btnExportarPlaylist);
-			this->Controls->Add(this->lblMostrarPlaylist);
 			this->Controls->Add(this->btnBorrarPlaylist);
-			this->Controls->Add(this->lblTamañoPlaylist);
 			this->Controls->Add(this->btnReproducir);
-			this->Controls->Add(this->lblPlaylist);
 			this->Controls->Add(this->txtAhoraReproduciendo);
 			this->Controls->Add(this->lblAhoraReproduciendo);
+			this->Icon = (cli::safe_cast<System::Drawing::Icon^>(resources->GetObject(L"$this.Icon")));
 			this->Name = L"MyForm";
 			this->Text = L"Spotify";
 			this->Load += gcnew System::EventHandler(this, &MyForm::MyForm_Load);
@@ -431,9 +446,13 @@ private: System::Void btnBorrarPlaylist_Click(System::Object^ sender, System::Ev
 	lblMostrarPlaylist->Text = "Playlist Vacía";
 }
 private: System::Void btnExportarPlaylist_Click(System::Object^ sender, System::EventArgs^ e) {
-
+	if (!Playlist1->PilaVacia())
+	{
 		Print->Exportar(Playlist1->Recorrer());
 		MessageBox::Show("Archivo .csv exportado correctamente.");
+	}
+	else
+		MessageBox::Show("Playlist Vacía");
 }
 private: System::Void btnAgregaraCola_Click(System::Object^ sender, System::EventArgs^ e) {
 	
