@@ -494,6 +494,6 @@ private: System::Void btnReproducirSiguiente_Click(System::Object^ sender, Syste
 		lblMostrarCola->Text = "Cola Vacía";
 	}
 }
-	   //hola
+	   
 };
 }
