@@ -169,7 +169,7 @@ namespace PartyMix {
 			this->btnReproducir->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 8.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->btnReproducir->ForeColor = System::Drawing::Color::Black;
-			this->btnReproducir->Location = System::Drawing::Point(135, 51);
+			this->btnReproducir->Location = System::Drawing::Point(91, 51);
 			this->btnReproducir->Name = L"btnReproducir";
 			this->btnReproducir->Size = System::Drawing::Size(105, 33);
 			this->btnReproducir->TabIndex = 4;
@@ -195,7 +195,7 @@ namespace PartyMix {
 			this->btnBorrarPlaylist->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 8.25F, System::Drawing::FontStyle::Regular,
 				System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
 			this->btnBorrarPlaylist->ForeColor = System::Drawing::Color::Black;
-			this->btnBorrarPlaylist->Location = System::Drawing::Point(246, 51);
+			this->btnBorrarPlaylist->Location = System::Drawing::Point(202, 51);
 			this->btnBorrarPlaylist->Name = L"btnBorrarPlaylist";
 			this->btnBorrarPlaylist->Size = System::Drawing::Size(105, 33);
 			this->btnBorrarPlaylist->TabIndex = 7;
@@ -216,14 +216,14 @@ namespace PartyMix {
 			// 
 			// txtTituloCola
 			// 
-			this->txtTituloCola->Location = System::Drawing::Point(538, 51);
+			this->txtTituloCola->Location = System::Drawing::Point(708, 47);
 			this->txtTituloCola->Name = L"txtTituloCola";
 			this->txtTituloCola->Size = System::Drawing::Size(98, 20);
 			this->txtTituloCola->TabIndex = 10;
 			// 
 			// txtArtistaCola
 			// 
-			this->txtArtistaCola->Location = System::Drawing::Point(656, 51);
+			this->txtArtistaCola->Location = System::Drawing::Point(826, 47);
 			this->txtArtistaCola->Name = L"txtArtistaCola";
 			this->txtArtistaCola->Size = System::Drawing::Size(98, 20);
 			this->txtArtistaCola->TabIndex = 11;
@@ -234,7 +234,7 @@ namespace PartyMix {
 			this->lblTitulo->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 8.25F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->lblTitulo->ForeColor = System::Drawing::Color::White;
-			this->lblTitulo->Location = System::Drawing::Point(535, 35);
+			this->lblTitulo->Location = System::Drawing::Point(705, 31);
 			this->lblTitulo->Name = L"lblTitulo";
 			this->lblTitulo->Size = System::Drawing::Size(41, 13);
 			this->lblTitulo->TabIndex = 12;
@@ -246,7 +246,7 @@ namespace PartyMix {
 			this->lblArtista->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 8.25F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->lblArtista->ForeColor = System::Drawing::Color::White;
-			this->lblArtista->Location = System::Drawing::Point(653, 35);
+			this->lblArtista->Location = System::Drawing::Point(823, 31);
 			this->lblArtista->Name = L"lblArtista";
 			this->lblArtista->Size = System::Drawing::Size(43, 13);
 			this->lblArtista->TabIndex = 13;
@@ -258,7 +258,7 @@ namespace PartyMix {
 			this->lblBuscarCanciones->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 8.25F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->lblBuscarCanciones->ForeColor = System::Drawing::Color::White;
-			this->lblBuscarCanciones->Location = System::Drawing::Point(535, 13);
+			this->lblBuscarCanciones->Location = System::Drawing::Point(705, 9);
 			this->lblBuscarCanciones->Name = L"lblBuscarCanciones";
 			this->lblBuscarCanciones->Size = System::Drawing::Size(109, 13);
 			this->lblBuscarCanciones->TabIndex = 14;
@@ -270,7 +270,7 @@ namespace PartyMix {
 			this->btnExportarPlaylist->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 8.25F, System::Drawing::FontStyle::Regular,
 				System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
 			this->btnExportarPlaylist->ForeColor = System::Drawing::Color::Black;
-			this->btnExportarPlaylist->Location = System::Drawing::Point(357, 51);
+			this->btnExportarPlaylist->Location = System::Drawing::Point(313, 51);
 			this->btnExportarPlaylist->Name = L"btnExportarPlaylist";
 			this->btnExportarPlaylist->Size = System::Drawing::Size(111, 33);
 			this->btnExportarPlaylist->TabIndex = 9;
@@ -281,7 +281,7 @@ namespace PartyMix {
 			// btnAgregaraCola
 			// 
 			this->btnAgregaraCola->BackColor = System::Drawing::Color::LimeGreen;
-			this->btnAgregaraCola->Location = System::Drawing::Point(538, 77);
+			this->btnAgregaraCola->Location = System::Drawing::Point(708, 73);
 			this->btnAgregaraCola->Name = L"btnAgregaraCola";
 			this->btnAgregaraCola->Size = System::Drawing::Size(105, 33);
 			this->btnAgregaraCola->TabIndex = 15;
@@ -295,7 +295,7 @@ namespace PartyMix {
 			this->lblMostrarCola->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 8.25F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->lblMostrarCola->ForeColor = System::Drawing::Color::White;
-			this->lblMostrarCola->Location = System::Drawing::Point(535, 204);
+			this->lblMostrarCola->Location = System::Drawing::Point(705, 200);
 			this->lblMostrarCola->Name = L"lblMostrarCola";
 			this->lblMostrarCola->Size = System::Drawing::Size(0, 13);
 			this->lblMostrarCola->TabIndex = 16;
@@ -306,7 +306,7 @@ namespace PartyMix {
 			this->lblCola->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 8.25F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->lblCola->ForeColor = System::Drawing::Color::White;
-			this->lblCola->Location = System::Drawing::Point(535, 161);
+			this->lblCola->Location = System::Drawing::Point(705, 157);
 			this->lblCola->Name = L"lblCola";
 			this->lblCola->Size = System::Drawing::Size(32, 13);
 			this->lblCola->TabIndex = 17;
@@ -318,7 +318,7 @@ namespace PartyMix {
 			this->lblCancionesCola->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 8.25F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->lblCancionesCola->ForeColor = System::Drawing::Color::White;
-			this->lblCancionesCola->Location = System::Drawing::Point(535, 177);
+			this->lblCancionesCola->Location = System::Drawing::Point(705, 173);
 			this->lblCancionesCola->Name = L"lblCancionesCola";
 			this->lblCancionesCola->Size = System::Drawing::Size(74, 13);
 			this->lblCancionesCola->TabIndex = 18;
@@ -327,7 +327,7 @@ namespace PartyMix {
 			// btnBorrarCola
 			// 
 			this->btnBorrarCola->BackColor = System::Drawing::Color::LimeGreen;
-			this->btnBorrarCola->Location = System::Drawing::Point(656, 116);
+			this->btnBorrarCola->Location = System::Drawing::Point(826, 112);
 			this->btnBorrarCola->Name = L"btnBorrarCola";
 			this->btnBorrarCola->Size = System::Drawing::Size(105, 33);
 			this->btnBorrarCola->TabIndex = 19;
@@ -338,7 +338,7 @@ namespace PartyMix {
 			// btnDesencolar
 			// 
 			this->btnDesencolar->BackColor = System::Drawing::Color::LimeGreen;
-			this->btnDesencolar->Location = System::Drawing::Point(538, 116);
+			this->btnDesencolar->Location = System::Drawing::Point(708, 112);
 			this->btnDesencolar->Name = L"btnDesencolar";
 			this->btnDesencolar->Size = System::Drawing::Size(105, 33);
 			this->btnDesencolar->TabIndex = 20;
@@ -351,7 +351,7 @@ namespace PartyMix {
 			this->btnReproducirAnterior->BackColor = System::Drawing::Color::LimeGreen;
 			this->btnReproducirAnterior->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 8.25F, System::Drawing::FontStyle::Regular,
 				System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
-			this->btnReproducirAnterior->Location = System::Drawing::Point(538, 312);
+			this->btnReproducirAnterior->Location = System::Drawing::Point(786, 323);
 			this->btnReproducirAnterior->Name = L"btnReproducirAnterior";
 			this->btnReproducirAnterior->Size = System::Drawing::Size(105, 47);
 			this->btnReproducirAnterior->TabIndex = 21;
@@ -364,7 +364,7 @@ namespace PartyMix {
 			this->btnReproducirSiguiente->BackColor = System::Drawing::Color::LimeGreen;
 			this->btnReproducirSiguiente->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 8.25F, System::Drawing::FontStyle::Regular,
 				System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
-			this->btnReproducirSiguiente->Location = System::Drawing::Point(649, 312);
+			this->btnReproducirSiguiente->Location = System::Drawing::Point(897, 323);
 			this->btnReproducirSiguiente->Name = L"btnReproducirSiguiente";
 			this->btnReproducirSiguiente->Size = System::Drawing::Size(105, 47);
 			this->btnReproducirSiguiente->TabIndex = 22;
@@ -378,7 +378,7 @@ namespace PartyMix {
 			this->label1->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 8.25F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->label1->ForeColor = System::Drawing::SystemColors::ButtonFace;
-			this->label1->Location = System::Drawing::Point(12, 261);
+			this->label1->Location = System::Drawing::Point(320, 120);
 			this->label1->Name = L"label1";
 			this->label1->Size = System::Drawing::Size(104, 13);
 			this->label1->TabIndex = 23;
@@ -390,7 +390,7 @@ namespace PartyMix {
 			this->lblRecienSonadas->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 8.25F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->lblRecienSonadas->ForeColor = System::Drawing::SystemColors::ButtonFace;
-			this->lblRecienSonadas->Location = System::Drawing::Point(12, 284);
+			this->lblRecienSonadas->Location = System::Drawing::Point(320, 157);
 			this->lblRecienSonadas->Name = L"lblRecienSonadas";
 			this->lblRecienSonadas->Size = System::Drawing::Size(0, 13);
 			this->lblRecienSonadas->TabIndex = 24;
@@ -401,7 +401,7 @@ namespace PartyMix {
 			this->btnSync->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 8.25F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->btnSync->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"btnSync.Image")));
-			this->btnSync->Location = System::Drawing::Point(463, 303);
+			this->btnSync->Location = System::Drawing::Point(711, 314);
 			this->btnSync->Name = L"btnSync";
 			this->btnSync->Size = System::Drawing::Size(58, 56);
 			this->btnSync->TabIndex = 25;
@@ -414,7 +414,7 @@ namespace PartyMix {
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(64)), static_cast<System::Int32>(static_cast<System::Byte>(64)),
 				static_cast<System::Int32>(static_cast<System::Byte>(64)));
-			this->ClientSize = System::Drawing::Size(889, 399);
+			this->ClientSize = System::Drawing::Size(1061, 391);
 			this->Controls->Add(this->btnSync);
 			this->Controls->Add(this->lblRecienSonadas);
 			this->Controls->Add(this->label1);
@@ -450,7 +450,7 @@ namespace PartyMix {
 #pragma endregion
 	private: System::Void MyForm_Load(System::Object^ sender, System::EventArgs^ e) {
 		ifstream myFile; 
-		myFile.open("datos.csv");
+		myFile.open("archivo3.csv");
 
 		while (myFile.good())
 		{
